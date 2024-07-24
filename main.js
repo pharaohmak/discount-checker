@@ -1,47 +1,24 @@
-// Import the readline module
-const readline = require('readline');
+const calculateDiscount = () => {
+  const item1 = parseFloat(document.getElementById('item1').value);
+  const item2 = parseFloat(document.getElementById('item2').value);
 
-// Create an interface for reading input from the user
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout
-});
+  if (isNaN(item1) || isNaN(item2)) {
+      document.getElementById('result').innerText = 'Please enter valid numbers for the item costs.';
+      return;
+  }
 
-// Welcome instructions
-console.log("Welcome to the Discount-Double Checker");
-console.log("I will ask you the price of 2 items and determine if you get a discount");
+  let total = item1 + item2;
 
-// Initialize variables
-let item1 = 0;
-let item2 = 0;
-
-// Get input from the user
-rl.question("Cost of First Item (in $): ", (answer) => {
-  item1 = parseFloat(answer);
-
-  rl.question("Cost of Second Item (in $): ", (answer) => {
-    item2 = parseFloat(answer);
-
-    let x = item1 + item2;
-
-    // Show results in console
-    console.log(`First Item Cost: $${item1}`);
-    console.log(`Second Item Cost: $${item2}`);
-
-    // Get discount and print results
-    if (x > 100) {
-      let discount = parseFloat((item1 + item2) * 0.1);
-      x = x - discount;
-      console.log(`Your total purchase is $${x}, which includes your 10% discount.`);
-    } else if (x < 100 && x > 50) {
-      let discount = parseFloat((item1 + item2) *.05);
-      x = x - discount;
-      console.log(`Your total purchase is $${x}, which includes your 5% discount.`);
-    } else {
-      console.log(`Your total purchase is $${x}.`);
-    }
-
-    // Close the readline interface
-    rl.close();
-  });
-});
+  let discount = 0;
+  if (total > 100) {
+      discount = total * 0.1;
+      total -= discount;
+      document.getElementById('result').innerText = `Your total purchase is $${total.toFixed(2)}, which includes your 10% discount.`;
+  } else if (total > 50) {
+      discount = total * 0.05;
+      total -= discount;
+      document.getElementById('result').innerText = `Your total purchase is $${total.toFixed(2)}, which includes your 5% discount.`;
+  } else {
+      document.getElementById('result').innerText = `Your total purchase is $${total.toFixed(2)}.`;
+  }
+}

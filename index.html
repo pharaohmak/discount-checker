@@ -1,27 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Discount Double Check</title>
-
-    <!-- Web Page Stylesheet -->
+    <title>Discount-Double Checker</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Discount Double-Check</h1>
-    <h3>Use the console to determine the discount </h3>
-    <p class="item-1"></p>
-    <p class="item-2"></p>
-    <p class="total"></p>
-
-    <button id="img-btn">Show Graphic Answer</button>
-    <br>
-    <img id="img-result" src="#" alt="">
-
-    <!-- Web Page JavaScript -->
+    <div class="container">
+        <h1>Discount-Double Checker</h1>
+        <p>I will ask you the price of 2 items and determine if you get a discount</p>
+        <div class="form-group">
+            <label for="item1">Cost of First Item (in $):</label>
+            <input type="number" id="item1" placeholder="Enter cost of first item">
+        </div>
+        <div class="form-group">
+            <label for="item2">Cost of Second Item (in $):</label>
+            <input type="number" id="item2" placeholder="Enter cost of second item">
+        </div>
+        <button onclick="calculateDiscount()">Calculate</button>
+        <div id="result"></div>
+    </div>
     <script src="main.js"></script>
 </body>
 </html>
